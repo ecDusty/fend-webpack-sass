@@ -1,14 +1,15 @@
-var path = require('path')
+const path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
-var bodyParser = require('body-parser')
-var cors = require('cors')
+const mockAPITitle = require('./mockAPITitle.js')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
-var json = {
-    'title': 'test json response',
-    'message': 'this is a message',
-    'time': 'now'
-}
+// var json = {
+//     'title': 'test json response',
+//     'message': 'this is a message',
+//     'time': 'now'
+// }
 
 const app = express()
 app.use(cors())
@@ -29,6 +30,10 @@ app.get('/', function (req, res) {
 
 app.get('/test', function (req, res) {
     res.json(mockAPIResponse);
+})
+
+app.get('/api/get/title', (req, res) => {
+    res.json(mockAPITitle)
 })
 
 // designates what port the app will listen to for incoming requests
